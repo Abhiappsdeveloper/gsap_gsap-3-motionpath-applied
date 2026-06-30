@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GSAP 3 motionPath applied to scale with curviness</title>
+    <link rel='stylesheet' href='https://codepen.io/GreenSock/pen/xxmzBrw.css'>
+    <style>
+        main {
+            text-align: center;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        main div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .box {
+            will-change: transform;
+            margin-bottom: 2rem;
+        }
+    </style>
+
+</head>
+
+<body>
+    <main>
+        <div>
+            <div class="box gradient-green" id="box-1"></div>
+            <p>curviness: 0</p>
+        </div>
+        <div>
+            <div class="box gradient-green" id="box-2"></div>
+            <p>curviness: 2</p>
+        </div>
+
+
+    </main>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js'></script>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MotionPathPlugin.min.js'></script>
+    <script>
+        var scales = [{ scale: 1.3 }, { scale: 0.2 }, { scale: 1 }];
+
+        gsap.to('#box-1', {
+            motionPath: {
+                path: scales,
+                curviness: 0
+            },
+            duration: 3,
+            ease: "none",
+            repeat: -1,
+            repeatDelay: 1
+        });
+
+        gsap.to('#box-2', {
+            motionPath: {
+                path: scales,
+                curviness: 2
+            },
+            duration: 3,
+            ease: "none",
+            repeat: -1,
+            repeatDelay: 1
+        });
+    </script>
+
+</body>
+
+</html>
